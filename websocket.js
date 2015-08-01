@@ -13,10 +13,10 @@ module.exports = class WebSocket {
    * @param  {number} port
    */
   constructor(port) {
-    this.port = parseInt(port);
+    port = parseInt(port);
     // Validate port
     if(isNaN(port)) {
-      this.port = 8080;
+      port = 8080;
     }
 
     let express = require('express');

@@ -21,7 +21,7 @@ So even other people of your team could access the webserver to test.
  - Add more eye-friendly RGB codes
 
 ### Scripts used
- - [socket.io Chat](https://github.com/socketio/socket.io/tree/master/examples/chat)
+ - [socket.io Chat](http://socket.io/get-started/chat/)
 
 ### Thanks
  - To Tirus for giving me the idea for creating this as a package and not a standalone application

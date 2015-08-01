@@ -41,7 +41,7 @@ function main(port) {
 
     console.log("\n----- GTA-MP web client -----");
     console.log("Authors: Cludch, derbl4ck");
-    console.log(`Port: ${websocketServer.port}`);
+    console.log(`Port: ${port}`);
     console.log("-----------------------------\n");
 }
 

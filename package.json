@@ -2,11 +2,18 @@
   "name": "webclient",
   "version": "1.0.0",
   "description": "GTA-MP web client",
+  "repository": "https://github.com/Cludch/GTA-MP-webClient",
+  "bugs": "https://github.com/Cludch/GTA-MP-webClient/issues",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jannis 'Cludch' Lehmann",
+  "contributors": [
+    {
+      "name": "Lukas 'derbl4ck' Berwanger"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.2",

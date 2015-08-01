@@ -2,19 +2,26 @@
 <html>
   <head>
     <title>webClient by Cludch</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
+      @import url(http://fonts.googleapis.com/css?family=Open+Sans);
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      body { font-family: 'Open Sans', sans-serif; font-size: 13px; }
+      .info { background-color: #BFFFC1; border-bottom: 1px solid #C1C1C1; padding: 7px; }
+      form { background: #ECECEC; border-top: 1px solid #C1C1C1; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 1px solid #DADADA; padding: 10px; width: 88%; margin-right: 1%; }
+      form button { float: right; width: 11%; background: #BAF35D; border: 1px solid #DADADA; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      .pr5 { padding-right: 5px; }
     </style>
   </head>
   <body>
-    <h1 id="playerName">Using: - </h1>
+    <div class="info">
+      <h1 id="playerName">Your Name: - </h1>
+      <i>WebClient by Cludch &amp; derbl4ck</i>
+    </div>
     <ul id="messages"></ul>
     <form onSubmit="return send();">
       <input id="m" autocomplete="off" /><button>Send</button>
@@ -25,7 +32,7 @@
       "use strict";
 
       $(document).ready(function() {
-        $('#messages').append($('<li>').text('Type in your input field "use [playerName]" to use your desired player name'));
+        $('#messages').append($('<li>').text('Type in your input field "use [playerName]" to use your desired player name').prepend('<i class="fa fa-info pr5"></i>'));
       });
 
       var socket = io();
@@ -43,23 +50,27 @@
         var message = $('#m').val();
 
         // Check if message is meant to set the playerName
-        if(message.substring(0,4) === 'use ' && playerName.length === 0) {
+        if(message.substring(0,4) === 'use ' && playerName.length === 0 && message.substring(4, message.length).search(" ") > 0) {
           playerName = message.substring(4, message.length);
-          $("#playerName").text(`Using: ${playerName}`);
+          $("#playerName").text(`Your Name: ${playerName}`);
           socket.emit('setUsername', playerName);
           $('#messages').append($('<li>').text(`Now using ${playerName} as STAPlayer`));
         }
         // Check if playerName is already set but the client tries to set it again
         else if(message.substring(0,4) === 'use ' && playerName.length > 0) {
-          $('#messages').append($('<li>').text("You can only change your name by restarting the client.").css("color", "rgb(255,0,0)"));
+          $('#messages').append($('<li>').text("You can only change your name by restarting the client.").css("color", "rgb(220,20,60)").prepend('<i class="fa fa-info pr5"></i>'));
         }
         // Check if playerName is already set
-        else if (playerName.length > 0) {
+        else if(playerName.length > 0) {
           socket.emit('data', {msg: message, rgb: new RGB(0,0,255)});
+        }
+        // Check if playerName contains spaces
+        else if(message.substring(4, message.length).search(" ") === 0) {
+          $('#messages').append($('<li>').text("Your name should not contain spaces!").css("color", "rgb(220,20,60)").prepend('<i class="fa fa-info pr5"></i>'));
         }
         // playerName is not set, report to client
         else {
-          $('#messages').append($('<li>').text("Type use [playerName] to use your desired player name").css("color", "rgb(255,0,0)"));
+          $('#messages').append($('<li>').text("Type use [playerName] to use your desired player name").css("color", "rgb(220,20,60)").prepend('<i class="fa fa-info pr5"></i>'));
         }
         // Clear the input
         $('#m').val('');
@@ -67,7 +78,22 @@
       };
 
       socket.on('data', function(msg) {
-        $('#messages').append($('<li>').text(msg.msg).css("color", `rgb(${msg.rgb.r}, ${msg.rgb.g}, ${msg.rgb.b})`));
+
+        // Check if Message is type of connect
+        if(msg.type == 'connect'){
+          //.append('<i class="fa fa-user-plus"></i>')
+          $('#messages').append($('<li>').text(msg.msg).css("color", `rgb(${msg.rgb.r}, ${msg.rgb.g}, ${msg.rgb.b})`).prepend('<i class="fa fa-user-plus pr5"></i>'));
+        }
+
+        // Check if Message is type of disconnect
+        else if(msg.type == 'disconnect') {
+          $('#messages').append($('<li>').text(msg.msg).css("color", `rgb(${msg.rgb.r}, ${msg.rgb.g}, ${msg.rgb.b})`).prepend('<i class="fa fa-user-times pr5"></i>'));
+        }
+
+        // If no type matches, use default
+        else {
+          $('#messages').append($('<li>').text(msg.msg).css("color", `rgb(${msg.rgb.r}, ${msg.rgb.g}, ${msg.rgb.b})`));
+        }
       });
     </script>
   </body>

@@ -17,8 +17,6 @@ So even other people of your team could access the webserver to test.
 
 ### Todos
 
- - Add a disconnect event and remove the player from the STAg_players array
- - Add more eye-friendly RGB codes
 
 ### Scripts used
  - [socket.io Chat](http://socket.io/get-started/chat/)

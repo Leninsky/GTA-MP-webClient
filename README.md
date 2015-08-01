@@ -21,8 +21,6 @@ So even other people of your team could access the webserver to test.
 
 ## Changelog
 
-----
-
 ##### 1.0 (01.08.2015)
 
  - First release

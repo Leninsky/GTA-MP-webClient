@@ -32,8 +32,6 @@ So even other people of your team could access the webserver to test.
  - Added message types
  - Added a disconnect event
 
-----
-
 ## Scripts used
  - [socket.io Chat](http://socket.io/get-started/chat/)
 

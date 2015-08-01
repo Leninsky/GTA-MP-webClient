@@ -8,7 +8,7 @@
 'use strict';
 
 let config = require('./config');
-let websocket = require('./websocket');
+let Websocket = require('./websocket');
 
 // Create test player class
 global.STAPlayer = class Player {
@@ -37,7 +37,7 @@ global.RGB = class RGB {
  * @param number port to listen on
  */
 function main(port) {
-    let websocketServer = new websocket(port);
+    new Websocket(port);
 
     console.log("\n----- GTA-MP web client -----");
     console.log("Authors: Cludch, derbl4ck");

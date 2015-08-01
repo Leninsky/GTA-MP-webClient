@@ -64,8 +64,8 @@ module.exports = class WebSocket {
       });
 
       socket.on('disconnect', function(username) {
-        socket.emit('data', {msg: `Got disconnect!`, rgb: new RGB(50,205,50), type: 'disconnect'});
-        var i = global.g_STAPlayers.indexOf(socket.player);
+        socket.emit('data', {msg: 'Got disconnect!', rgb: new RGB(50,205,50), type: 'disconnect'});
+        let i = global.g_STAPlayers.indexOf(socket.player);
         global.g_STAPlayers.splice(i, 1);
       });
     });

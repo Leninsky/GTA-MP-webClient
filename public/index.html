@@ -50,7 +50,7 @@
         var message = $('#m').val();
 
         // Check if message is meant to set the playerName
-        if(message.substring(0,4) === 'use ' && playerName.length === 0 && message.substring(4, message.length).search(" ") > 0) {
+        if(message.substring(0,4) === 'use ' && playerName.length === 0 && !(playerName.startswith(' '))) {
           playerName = message.substring(4, message.length);
           $("#playerName").text(`Your Name: ${playerName}`);
           socket.emit('setUsername', playerName);
@@ -64,8 +64,8 @@
         else if(playerName.length > 0) {
           socket.emit('data', {msg: message, rgb: new RGB(0,0,255)});
         }
-        // Check if playerName contains spaces
-        else if(message.substring(4, message.length).search(" ") === 0) {
+        // Check if playerName starts with spaces
+        else if(playerName.startswith(' ')) {
           $('#messages').append($('<li>').text("Your name should not contain spaces!").css("color", "rgb(220,20,60)").prepend('<i class="fa fa-info pr5"></i>'));
         }
         // playerName is not set, report to client

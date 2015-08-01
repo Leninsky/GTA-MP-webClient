@@ -20,7 +20,9 @@ So even other people of your team could access the webserver to test.
  - Check if the player name only consists of spaces
 
 ## Changelog
+
 ----
+
 ##### 1.0 (01.08.2015)
 
  - First release
@@ -31,7 +33,9 @@ So even other people of your team could access the webserver to test.
  - Reworked the RGB codes
  - Added message types
  - Added a disconnect event
+
 ----
+
 ## Scripts used
  - [socket.io Chat](http://socket.io/get-started/chat/)
 

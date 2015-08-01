@@ -26,6 +26,9 @@ So even other people of your team could access the webserver to test.
 ### Thanks
  - To Tirus for giving me the idea for creating this as a package and not a standalone application
 
+###  Bitcoin
+If you want to donate me some coffee for further developments, my Bitcoin address is `16w7umTeoJfPzZnDbQtuefrPRssq21jhJ5`
+
 License
 ----
 

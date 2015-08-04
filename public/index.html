@@ -63,7 +63,7 @@
           $('#messages').append($('<li>').text('You can only change your name by restarting the client.').css('color', 'rgb(220,20,60)').prepend('<i class="fa fa-info pr5"></i>'));
         }
         // Check if playerName starts with spaces
-        else if(playerName.startswith(' ')) {
+        else if(playerName.startsWith(' ')) {
           console.log('a');
           $('#messages').append($('<li>').text('Your name should not contain spaces!').css('color', 'rgb(220,20,60)').prepend('<i class="fa fa-info pr5"></i>'));
         }

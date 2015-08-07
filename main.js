@@ -40,7 +40,8 @@ function main(port) {
     new Websocket(port);
 
     console.log("\n----- GTA-MP web client -----");
-    console.log("Authors: Cludch, derbl4ck");
+    console.log("Authors: Cludch");
+    console.log("Contributor: derbl4ck");
     console.log(`Port: ${port}`);
     console.log("-----------------------------\n");
 }

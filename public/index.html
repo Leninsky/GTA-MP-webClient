@@ -49,8 +49,6 @@
       let send = function() {
         let message = $('#m').val();
 
-        console.log('"' + message + '"');
-
         // Check if message is meant to set the playerName
         if(message.substring(0,4) === 'use ' && playerName.length === 0) {
           playerName = message.substring(4, message.length);
@@ -64,7 +62,6 @@
         }
         // Check if playerName starts with spaces
         else if(playerName.startsWith(' ')) {
-          console.log('a');
           $('#messages').append($('<li>').text('Your name should not contain spaces!').css('color', 'rgb(220,20,60)').prepend('<i class="fa fa-info pr5"></i>'));
         }
         // Check if playerName is already set

@@ -35,7 +35,7 @@
         $('#messages').append($('<li>').text('Type in your input field "use [playerName]" to use your desired player name').prepend('<i class="fa fa-info pr5"></i>'));
       });
 
-      let socket = io();
+      let socket = io.connect('http://localhost:8080');
       let playerName = '';
 
       let RGB = class RGB {

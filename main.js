@@ -41,7 +41,7 @@ function main(port) {
 
     console.log("\n----- GTA-MP web client -----");
     console.log("Authors: Cludch");
-    console.log("Contributor: derbl4ck");
+    console.log("Contributors: derbl4ck");
     console.log(`Port: ${port}`);
     console.log("-----------------------------\n");
 }

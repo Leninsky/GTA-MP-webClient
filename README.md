@@ -15,7 +15,7 @@ So even other people of your team could access the webserver to test.
   - Check the `config.js` to set the port - default port is `8080`
   - Run the STA
 
-## Todos
+## To do
 
  - Check if the player name only consists of spaces
 

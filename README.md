@@ -1,12 +1,12 @@
 # webclient
 
-The webclient is a GTA-MP server package.
-It is a similar client as the FakePlayer binary but it allows to emulate a client via a browser.
+The web client is a GTA-MP server package.
+It is a similar client as the fake player binary but it allows to emulate a client via a browser.
 So even other people of your team could access the webserver to test.
 
 ## Version
 
-1.1.0
+1.2.0
 
 ## Installation
 
@@ -22,15 +22,17 @@ So even other people of your team could access the webserver to test.
 ## Changelog
 
 ##### 1.0 (01.08.2015)
-
  - First release
 
 ##### 1.1 (01.08.2015)
-
  - Added a new layout
  - Reworked the RGB codes
  - Added message types
  - Added a disconnect event
+
+##### 1.2.0 (19.08.2015)
+ - Moved the JavaScript client code to a separate file (now GitHub detects that the package is mostly JavaScript)
+ - Now compatible with the newest default server package
 
 ## Scripts used
  - [socket.io Chat](http://socket.io/get-started/chat/)

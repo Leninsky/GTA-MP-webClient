@@ -34,12 +34,12 @@ module.exports = class WebSocket {
       socket.on('setUsername', function(username) {
         socket.player = new global.STAPlayer(username);
         socket.player.SendChatMessage = (msg, rgb, type) => {
-          // Check if colors are set
+          // Check if colors are set else set default colors
           if(!rgb) {
             rgb = new RGB(0,191,255);
           }
 
-          // Set type of Message to connect
+          // Set message type to connect
           type = 'connect';
 
           // Send the message to the client
@@ -58,12 +58,15 @@ module.exports = class WebSocket {
         }
         // Else it is a chat message, format it as a chat message
         // Call ChatMessage, checks for swearing (atleast in the default server package)
-        else if(!events.Call("ChatMessage", socket.player, msg.msg)[0]) {
-          io.emit('data', {msg: `[Chat]${socket.player.name}: ${msg.msg}`, rgb: new RGB(0,191,255), type: 'message'});
+        else {
+          let eventMessage = events.Call("ChatMessage", socket.player, msg.msg)[0];
+          if (typeof eventMessage === 'string') {
+            io.emit('data', {msg: eventMessage, rgb: new RGB(0,191,255), type: 'message'});
+          }
         }
       });
 
-      socket.on('disconnect', function(username) {
+      socket.on('disconnect', function() {
         socket.emit('data', {msg: 'Got disconnect!', rgb: new RGB(50,205,50), type: 'disconnect'});
         let i = global.g_STAPlayers.indexOf(socket.player);
         global.g_STAPlayers.splice(i, 1);
